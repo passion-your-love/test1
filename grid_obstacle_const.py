@@ -1,14 +1,11 @@
 # grid_obstacle_const.py
-# 坐标系：原始地图用 (x, y)，但环境内部统一用 (row, col) = (y, x)
-# 故此处存储的障碍坐标均为 (row, col) 即 (y, x)
-
+# 坐标系：原始地图用 (x, y)，环境内部统一用 (row, col) = (y, x)
 MAP_WIDTH = 16   # x 0~15
 MAP_HEIGHT = 21  # y 0~20
 
-# 使用集合存储 (row, col) 即 (y, x)
 OBSTACLE_COORDS = set()
 
-# ---------- 根据你的逐行数据，转换为 (y, x) 并添加 ----------
+# ---------- 按你的逐行数据，转换为 (y, x) 并添加 ----------
 # y=20
 for x in [0,1,2,3,4,5,6,7,13,14,15]:
     OBSTACLE_COORDS.add((20, x))
@@ -74,12 +71,9 @@ for x in [5,6,7,14]:
 for x in [0,1,2,3,4,5,6,7,8,9,10,11,13,14,15]:
     OBSTACLE_COORDS.add((0, x))
 
-# 目标点改为 (row, col) 形式，即 (y, x)
-# 原始 (14,1) 是障碍，现改为底部通道可行走点 (1, 8) 或 (1, 9) 等
-# 这里建议设为 (1, 8)，位于底部非障碍区
-GOAL_POS = (1, 8)   # 即 y=1, x=8
+# 目标点（默认，但刘忠坤训练时会传参覆盖，这里保留）
+GOAL_POS = (1, 8)   # (row, col) = (y, x)
 
-# 可提供转换函数（可选）
 def get_obstacle_map():
     grid = [[0]*MAP_WIDTH for _ in range(MAP_HEIGHT)]
     for r, c in OBSTACLE_COORDS:
