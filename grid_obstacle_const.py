@@ -5,7 +5,6 @@ MAP_HEIGHT = 21  # y 0~20
 
 OBSTACLE_COORDS = set()
 
-# ---------- 按你的逐行数据，转换为 (y, x) 并添加 ----------
 # y=20
 for x in [0,1,2,3,4,5,6,7,13,14,15]:
     OBSTACLE_COORDS.add((20, x))
@@ -71,7 +70,7 @@ for x in [5,6,7,14]:
 for x in [0,1,2,3,4,5,6,7,8,9,10,11,13,14,15]:
     OBSTACLE_COORDS.add((0, x))
 
-# 目标点（默认，但刘忠坤训练时会传参覆盖，这里保留）
+# 目标点
 GOAL_POS = (1, 8)   # (row, col) = (y, x)
 
 def get_obstacle_map():
